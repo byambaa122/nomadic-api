@@ -1,0 +1,32 @@
+{
+    "name": "nomadic",
+    "version": "1.0.0",
+    "description": "Connecting travellers with local travel agents",
+    "main": "server.js",
+    "scripts": {
+        "start": "nodemon --exec babel-node -- ./src/server.js"
+    },
+    "author": "Unn LLC",
+    "license": "ISC",
+    "dependencies": {
+        "bcryptjs": "^2.4.3",
+        "body-parser": "^1.18.3",
+        "cookie-parser": "^1.4.3",
+        "cors": "^2.8.4",
+        "dotenv": "^6.0.0",
+        "express": "^4.16.3",
+        "express-validator": "^5.3.0",
+        "helmet": "^3.13.0",
+        "jsonwebtoken": "^8.3.0",
+        "mongoose": "^5.2.7",
+        "passport": "^0.4.0",
+        "passport-facebook": "^2.1.1",
+        "passport-http-bearer": "^1.0.1"
+    },
+    "devDependencies": {
+        "babel-cli": "^6.26.0",
+        "babel-preset-env": "^1.7.0",
+        "eslint": "^5.3.0",
+        "nodemon": "^1.18.3"
+    }
+}
