@@ -1,15 +1,20 @@
-import { validationResult } from 'express-validator/check'
+import { checkSchema, validationResult } from 'express-validator/check'
 
-export default (req, res, next) => {
-    try {
-        const errorFormatter = ({ msg }) => [msg]
+const result = validationResult.withDefaults({
+    formatter: (error) => [error.msg]
+})
 
-        validationResult(req)
-            .formatWith(errorFormatter)
-            .throw()
+export default schema => [
+    checkSchema(schema),
+    (req, res, next) => {
+        const errors = result(req)
+
+        if (!errors.isEmpty()) {
+            return res.status(422).json({
+                errors: errors.mapped()
+            })
+        }
 
         next()
-    } catch (err) {
-        next(err)
     }
-}
+]

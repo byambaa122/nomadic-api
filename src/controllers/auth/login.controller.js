@@ -2,8 +2,18 @@ import User from './../../models/user.model'
 
 const validator = {
     email: {
+        isEmpty: {
+            errorMessage: 'Please enter an email address',
+            negated: true
+        },
         isEmail: {
-            errorMessage: 'И-мэйл хаяг оруулна уу'
+            errorMessage: 'Please enter a valid email address'
+        }
+    },
+    password: {
+        isEmpty: {
+            errorMessage: 'Please enter a password',
+            negated: true
         }
     }
 }
@@ -15,7 +25,7 @@ const index = async (req, res, next) => {
 
         if (!user || !user.validPassword(password)) {
             const errors = {
-                email: ['И-мэйл хаяг эсвэл нууц үг буруу байна']
+                email: ['Sorry, your password was incorrect']
             }
             return res.status(422).json({ errors })
         }

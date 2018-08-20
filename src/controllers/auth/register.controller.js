@@ -2,13 +2,21 @@ import User from './../../models/user.model'
 
 const validator = {
     email: {
+        isEmpty: {
+            errorMessage: 'Please enter an email address',
+            negated: true
+        },
         isEmail: {
-            errorMessage: 'И-мэйл хаяг оруулна уу'
+            errorMessage: 'Please enter a valid email address'
         }
     },
     password: {
+        isEmpty: {
+            errorMessage: 'Please enter a password',
+            negated: true
+        },
         isLength: {
-            errorMessage: 'Нууц үг хамгийн багадаа 6 тэмдэгт агуулсан байх шаардлагатай',
+            errorMessage: 'Password must be at least six characters',
             options: { min: 6 }
         }
     }

@@ -1,8 +1,9 @@
-# Nomadic
+## Nomadic
 
 Connecting travellers with local travel agents
 
 - [Express](https://expressjs.com)
+- [Express Validator](https://express-validator.github.io)
 - [Passport JS](http://www.passportjs.org)
 - [Mongoose](https://mongoosejs.com)
 
