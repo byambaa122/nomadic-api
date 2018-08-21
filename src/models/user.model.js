@@ -7,6 +7,7 @@ const options = {
     timestamps: true
 }
 
+// Mongoose schema
 const userSchema = new Schema({
     name: {
         type: String
@@ -29,6 +30,8 @@ const userSchema = new Schema({
 
 class UserClass {
     /**
+     * Compare password
+     * 
      * @param {String} password
      * @return {Boolean}
      */
@@ -37,6 +40,8 @@ class UserClass {
     }
 
     /**
+     * Generate token
+     * 
      * @return {String}
      */
     generateToken() {
@@ -51,6 +56,8 @@ class UserClass {
     }
 
     /**
+     * Hash password
+     * 
      * @param {String} password
      * @return {String}
      */

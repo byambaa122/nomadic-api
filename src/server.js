@@ -5,11 +5,12 @@ import cookieParser from 'cookie-parser'
 import passport from 'passport'
 import helmet from 'helmet'
 import cors from 'cors'
+import checkRole from './middlewares/check.role.middleware'
 import handleError from './middlewares/handle.error.middleware'
-import appRouter from './routes/app'
-import authenticateRouter from './routes/authenticate'
-import manageRouter from './routes/manage'
-import userRouter from './routes/user'
+import appRoute from './routes/app.route'
+import authenticateRoute from './routes/authenticate.route'
+import manageRoute from './routes/manage.route'
+import userRoute from './routes/user.route'
 import './config/database'
 import './config/passport'
 
@@ -25,23 +26,26 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json())
 app.use(passport.initialize())
 
-app.use('/api/v1', appRouter)
-app.use('/api/v1', authenticateRouter)
+// Application routes
+app.use('/api', appRoute)
+// Authentication routes
+app.use('/api', authenticateRoute)
+// Require authentication routes 
+app.use('/api', passport.authenticate('bearer', { session: false }), userRoute)
+// Require admin role
+app.use('/api', checkRole('admin'), manageRoute)
 
-router.use(passport.authenticate('bearer', { session: false }))
-
-app.use('/api/v1', manageRouter)
-app.use('/api/v1', userRouter)
-
+// Handle 404 error
 app.use((req, res, next) => {
     const err = new Error('No HTTP resource was found that matches the request URI')
     next(err)
 })
 
+// Handle all errors
 app.use(handleError)
 
 const port = process.env.PORT || 3000
 
 app.listen(port, () => {
-    console.log(`Server listening on ${port}`)
+    console.log(`Server listening on port ${port}`)
 })

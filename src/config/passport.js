@@ -5,6 +5,7 @@ import User from './../models/user.model'
 
 const BearerStrategy = passportHttpBearer.Strategy
 
+// Verify bearer token middleware, load user
 passport.use(new BearerStrategy(async (token, callback) => {
     try {
         const payload = jwt.verify(token, process.env.SECRET)
