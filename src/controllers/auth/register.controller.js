@@ -31,7 +31,6 @@ const index = async (req, res, next) => {
         })
 
         const token = user.generateToken()
-
         res.json({ token })
     } catch (err) {
         next(err)

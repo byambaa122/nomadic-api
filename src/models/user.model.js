@@ -7,10 +7,6 @@ const options = {
     timestamps: true
 }
 
-// const accountSchema = new Schema({
-
-// })
-
 const userSchema = new Schema({
     name: {
         type: String
@@ -21,7 +17,13 @@ const userSchema = new Schema({
         unique: true
     },
     password: {
-        type: String
+        type: String,
+        required: true
+    },
+    role: {
+        type: String,
+        enum: ['user', 'admin'],
+        default: 'user'
     }
 }, options)
 
