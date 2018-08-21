@@ -25,7 +25,7 @@ const index = async (req, res, next) => {
 
         if (!user || !user.validPassword(password)) {
             const errors = {
-                email: ['Sorry, your password was incorrect']
+                email: 'Sorry, your password was incorrect'
             }
             return res.status(422).json({ errors })
         }

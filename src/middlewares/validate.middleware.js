@@ -1,7 +1,7 @@
 import { checkSchema, validationResult } from 'express-validator/check'
 
 const result = validationResult.withDefaults({
-    formatter: (error) => [error.msg]
+    formatter: (err) => err.msg
 })
 
 export default schema => [
