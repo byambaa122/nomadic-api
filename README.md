@@ -1,6 +1,6 @@
-## Nomadic
+## nomadic
 
-Connecting travellers with local travel agents
+> Connecting travellers with local travel agents
 
 - [Express](https://expressjs.com)
 - [Express Validator](https://express-validator.github.io)
@@ -9,15 +9,14 @@ Connecting travellers with local travel agents
 
 ### Installation
 
-```
-git clone
-npm install
+``` bash
+# install dependencies
+$ npm install
 ```
 
 ### Starting the server
 
+``` bash
+# serve with hot reload at localhost:3000
+$ npm run start
 ```
-npm run start
-```
-
-The server will run on port 3000.
